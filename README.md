@@ -7,15 +7,18 @@ Search for Movies and shows using API written in Python
   - when given the appropriate id, will yield the movie matching that identifier (more on where that id comes from shortly).
 2. **/show/${id}** 
   - when given the appropriate id, will yield the show matching that identifier.
-3. **/search** 
-  - when given a '?query=${some title}', will yield any movies or shows matching that title, returning a JSON of matching titles, the years the media items were released, and whether each media item is a movie or a show. These results should be paginated.
-4. The 1,2 endpoints should contain, at minimum, the title, release year, and a synopsis of the media item being displayed.
+3. The 1,2 endpoints should contain, at minimum, the title, release year, and a synopsis of the media item being displayed.
+4. **/search/${some title}** 
+  - when given a '?query=${some title}', will yield any movies or shows matching that title, returning a JSON of matching titles, the years the media items were released, and whether each media item is a movie or a show.
+5. **/search/${some title}/page/${int: page number}** 
+   - when given a '?query=${some title}', will yield _paginated_ any movies or shows matching that title, returning a JSON of matching titles, the years the media items were released, and whether each media item is a movie or a show.
+
 
 # The data
 Using IMDB shows and Movie data can be found at https://www.imdb.com/interfaces/ by title _title.basics.tsv.gz_.
  
 **Contains the following information for titles:**
-- **tconst (int)** - alphanumeric unique identifier of the title
+- **tconst (int)** - numeric unique identifier of the title used as ${id}
 - **titleType (string)** – the type/format of the title (e.g. movie, short, tvseries, tvepisode, video, etc)
 - **primaryTitle (string)** – the more popular title / the title used by the filmmakers on promotional materials at the point of release
 - **originalTitle (string)** - original title, in the original language
