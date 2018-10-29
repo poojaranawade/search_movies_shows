@@ -27,3 +27,16 @@ Using IMDB shows and Movie data can be found at https://www.imdb.com/interfaces/
 - **endYear (YYYY)** – TV Series end year. blank for all other title types
 - **runtimeMinutes** – primary runtime of the title, in minutes
 - **genres (string array)** – includes up to three genres associated with the title
+
+
+# How to use
+**to use locally**
+- open terminal and cd to the directory where all these files are saved
+- Run
+  - to see json response on browser: python main_json_response.py
+  - to see html pages: python main_html_render.py
+- open browser and go to 
+  - **/movie/${id}** : http://localhost:5000/movie/9
+  - **/show/${id}** : http://localhost:5000/show/29270
+  - **/search/${some title}** : http://localhost:5000/search/merry
+  - **/search/${some title}/page/${int: page number}** : http://localhost:5000/search/merry/page/25
