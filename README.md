@@ -12,7 +12,7 @@ Search for Movies and shows using API written in Python
 4. The 1,2 endpoints should contain, at minimum, the title, release year, and a synopsis of the media item being displayed.
 
 # The data
-Using IMDB shows and Movie data can be found at [Source] (https://www.imdb.com/interfaces/) by title _title.basics.tsv.gz_.
+Using IMDB shows and Movie data can be found at https://www.imdb.com/interfaces/ by title _title.basics.tsv.gz_.
  
 **Contains the following information for titles:**
 - **tconst (int)** - alphanumeric unique identifier of the title
