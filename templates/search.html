@@ -1,0 +1,9 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="movie">
+    <h1>Results: </h1>
+    {% for c in content %}
+        <h3><a href=''>{{ c.name }}</a><h3>
+    {% endfor %}
+</div>
+{% endblock %}

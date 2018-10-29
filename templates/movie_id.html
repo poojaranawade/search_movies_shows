@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="movie">
+    <h1>Name of movie: {{ movie.name }}<h1>
+    <h4>Release Year: {{movie.releaseYear}}</h4>
+    <div class="box">
+        <h4>Genre: </h4>
+        {% for genre in movie.genres %}
+            <p class="item">{{ genre }}<p>
+        {% endfor %}
+    </div>
+    <h4>IMDB Score: {{movie.imdb_score}}</h4>
+</div>
+{% endblock %}
