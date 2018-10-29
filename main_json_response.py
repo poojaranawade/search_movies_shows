@@ -88,20 +88,21 @@ class Flask_app:
             final.append(items(row))
 
         if page > total_pages + 1:
-            response = jsonify(status=422, response={'val': 'try lower pages'})
+            response = jsonify(status=422, response={'val': 'try lower page number'})
             return '', '', response
 
         elif page == total_pages + 1:
             res_list = jsonify(status=200, response=[
-                               e.serialize() for e in final[total_pages * self.per_page:]], page=page, per_page=self.per_page,total_results=total)
+                               e.serialize() for e in final[total_pages * self.per_page:]], page=page,
+                               per_page=self.per_page, total_results=total)
             return "search.html", final[total_pages * self.per_page:], res_list
 
         res_list = []
         res_list = jsonify(status=200, response=[
-                           e.serialize() for e in final[start:end]], page=page, per_page=self.per_page, total_results=total)
+                           e.serialize() for e in final[start:end]], page=page,
+                           per_page=self.per_page, total_results=total)
         return "search.html", final[start:end], res_list
-    
-    
+
     def no_page_search_title(self, title):
         rows = self.data.loc[
             self.data['primaryTitle'].str.contains(str(title).title())]
@@ -151,6 +152,7 @@ def search_title(title, page=1):
     search_page, content, response = app_obj.search_title(title, int(page))
 #    return render_template(search_page, content=content)
     return response
+
 
 @app.route('/search/<title>')
 def no_page_search_title(title):
