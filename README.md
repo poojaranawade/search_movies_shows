@@ -64,7 +64,7 @@ Following steps from https://devcenter.heroku.com/articles/getting-started-with-
 4. create requirements file by using `pip freeze > requirements.txt` 
     **dont forget to remove the libraries that are not used in this app**
 5. heroku create app-name to create app on heroku e.g. `heroku create search-movies-shows`
-**dont forget to create Procfile** Procfile contents web: python main.py
+**dont forget to create Procfile** Procfile contents `web: python main.py`
 6. `git push heroku master` to push changes in the heroku app
 7. `heroku ps:scale web=1` to ensure that app is running
 8. go to  https://search-movies-shows.herokuapp.com/movie/9 to see results
