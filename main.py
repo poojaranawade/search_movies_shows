@@ -8,6 +8,7 @@ Created on Sat Oct 27 17:37:40 2018
 from flask import Flask, render_template, jsonify, request
 import pandas as pd
 import numpy as np
+import os
 
 
 class items:
@@ -18,8 +19,7 @@ class items:
         self.name = row['primaryTitle']
         self.releaseYear = int(row['startYear'])
         self.ratingLevel = 'Not Adult' if row['isAdult'] == '1' else 'Adult'
-        self.genres = row['genres'].split(
-            ',') if row['genres'] is not np.nan else []
+        self.genres = row['genres'].split(',') if row['genres'] is not np.nan else []
         self.time = str(row['runtimeMinutes']) + ' minutes'
 
     def serialize(self):
@@ -158,4 +158,5 @@ def search_title():
     return response
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(debug=True,port=port)
