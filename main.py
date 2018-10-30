@@ -132,10 +132,8 @@ app_obj = Flask_app()
 @app.route('/')
 def home():
     response = jsonify(status=422, response={
-                               'try': '/movie/${id}',
-                               'try': '/show/${id}',
-                               'try': '/search?query={some title}',
-                               'try': '/search?query={some title}&page={some page}'})
+                               'available api': ['/movie/${id}', '/show/${id}', '/search?query={some title}', 
+                               '/search?query={some title}&page={some page}']})
     return response
 
 
