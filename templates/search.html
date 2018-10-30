@@ -1,9 +1,18 @@
 {% extends "layout.html" %}
 {% block content %}
-<div class="movie">
+<div class="search">
     <h1>Results: </h1>
-    {% for c in content %}
-        <h3><a href=''>{{ c.name }}</a><h3>
-    {% endfor %}
+    <table>
+	  <thead>
+	    <th>Name</th>
+	    <th>Type</th>
+	  </thead>
+    {% for con in content%}
+	    <tr>
+	      <td><h3><a href=''>{{ con.name }}</a></h2></td>
+	      <td><h3>{{ con.type }}</h2></td>
+	    </tr>
+   	{% endfor %}
+</table>
 </div>
 {% endblock %}

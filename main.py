@@ -5,7 +5,7 @@ Created on Sat Oct 27 17:37:40 2018
 @author: Pooja Ranawade
 """
 
-from flask import Flask, render_template, jsonify
+from flask import Flask, render_template, jsonify, request
 import pandas as pd
 import numpy as np
 
@@ -88,13 +88,14 @@ class Flask_app:
             final.append(items(row))
 
         if page > total_pages + 1:
-            response = jsonify(status=422, response={'val': 'try lower page number'})
+            response = jsonify(status=422, response={
+                               'val': 'try lower page number'})
             return '', '', response
 
         elif page == total_pages + 1:
             res_list = jsonify(status=200, response=[
                                e.serialize() for e in final[total_pages * self.per_page:]], page=page,
-                               per_page=self.per_page, total_results=total)
+                               per_page=remain, total_results=total)
             return "search.html", final[total_pages * self.per_page:], res_list
 
         res_list = []
@@ -136,30 +137,25 @@ def home():
 @app.route('/movie/<id>')
 def movie_id(id):
     movie_page, movie, response = app_obj.movie_id(id)
-#    return render_template(movie_page, movie=movie)
     return response
 
 
 @app.route('/show/<id>')
 def show_id(id):
     show_page, show, response = app_obj.show_id(id)
-#    return render_template(show_page, show=show)
     return response
 
 
-@app.route('/search/<title>/page/<page>')
-def search_title(title, page=1):
-    search_page, content, response = app_obj.search_title(title, int(page))
-#    return render_template(search_page, content=content)
+@app.route('/search')
+def search_title():
+    title = request.args['title']
+    if len(request.args) > 1:
+        page = request.args['page']
+        search_page, content, response = app_obj.search_title(title, int(page))
+        return response
+    else:
+        search_page, content, response = app_obj.no_page_search_title(title)
     return response
-
-
-@app.route('/search/<title>')
-def no_page_search_title(title):
-    search_page, content, response = app_obj.no_page_search_title(title)
-#    return render_template(search_page, content=content)
-    return response
-
 
 if __name__ == '__main__':
     app.run(debug=True)

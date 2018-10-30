@@ -101,7 +101,6 @@ class Flask_app:
                            e.serialize() for e in final[start:end]], page=page)
         return "search.html", final[start:end], res_list
 
-
     def no_page_search_title(self, title):
         rows = self.data.loc[
             self.data['primaryTitle'].str.contains(str(title).title())]
@@ -144,15 +143,16 @@ def show_id(id):
     return render_template(show_page, show=show)
 
 
-@app.route('/search/<title>/page/<page>')
+@app.route('/search')
 def search_title(title, page=1):
-    search_page, content, response = app_obj.search_title(title, int(page))
-    return render_template(search_page, content=content)
-
-@app.route('/search/<title>')
-def no_page_search_title(title):
-    search_page, content, response = app_obj.no_page_search_title(title)
-    return render_template(search_page, content=content)
+    title = request.args['title']
+    if len(request.args) > 1:
+        page = request.args['page']
+        search_page, content, response = app_obj.search_title(title, int(page))
+        return render_template(search_page, content=content)
+    else:
+        search_page, content, response = app_obj.no_page_search_title(title)
+        return render_template(search_page, content=content)
 
 if __name__ == '__main__':
     app.run(debug=True)
