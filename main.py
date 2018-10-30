@@ -8,6 +8,7 @@ Created on Sat Oct 27 17:37:40 2018
 from flask import Flask, render_template, jsonify, request
 import pandas as pd
 import numpy as np
+import os
 
 
 class items:
@@ -168,7 +169,10 @@ app_obj = Flask_app()
 
 @app.route('/')
 def home():
-    return render_template('home.html')
+    response = jsonify(status=422, response={
+                               'available api': ['/movie/${id}', '/show/${id}', '/search?query={some title}', 
+                               '/search?query={some title}&page={some page}']})
+    return response
 
 
 @app.route('/movie/<id>')
@@ -200,4 +204,5 @@ def search_title():
     return response
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 33507))
+    app.run(host='0.0.0.0', port=port)
