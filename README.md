@@ -57,6 +57,7 @@ pip install -r requirements.txt
 
 
 **steps to deploy**
+
 Following steps from https://devcenter.heroku.com/articles/getting-started-with-python#set-up
 1. Install Heroku Client from https://devcenter.heroku.com/articles/heroku-cli#download-and-install
 2. Open cmd after installation is finished, run `heroku login` and enter email address and password
