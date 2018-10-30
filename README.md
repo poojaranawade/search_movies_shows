@@ -8,9 +8,9 @@ Search for Movies and shows using API written in Python
 2. **/show/${id}** 
   - when given the appropriate id, will yield the show matching that identifier.
 3. The 1,2 endpoints should contain, at minimum, the title, release year, and a synopsis of the media item being displayed.
-4. **/search/${some title}** 
+4. **/search?query=${some title}** 
   - when given a '?query=${some title}', will yield any movies or shows matching that title, returning a JSON of matching titles, the years the media items were released, and whether each media item is a movie or a show.
-5. **/search/${some title}/page/${int: page number}** 
+5. **/search?query=${some title}&page=${int: page number}** 
    - when given a '?query=${some title}', will yield _paginated_ any movies or shows matching that title, returning a JSON of matching titles, the years the media items were released, and whether each media item is a movie or a show.
 
 
