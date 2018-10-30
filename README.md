@@ -43,7 +43,28 @@ pip install -r requirements.txt
   - to see json response on browser: python main_json_response.py
   - to see html pages: python main_html_render.py
 - open browser and go to 
-  - **/movie/${id}** : http://localhost:5000/movie/9
-  - **/show/${id}** : http://localhost:5000/show/29270
-  - **/search/${some title}** : http://localhost:5000/search?query=merry
-  - **/search/${some title}/page/${int: page number}** : http://localhost:5000/search?query=merry&page=10
+  - /movie/${id} : http://localhost:5000/movie/9
+  - /show/${id} : http://localhost:5000/show/269988
+  - /search?query= ${some title} :  http://localhost:5000/search?query=merry
+  - /search?query=${some title}&page=${int: page number} : http://localhost:5000/search?query=merry&page=10  
+
+# Deployed on Heroku
+**Check Deployed version**
+- /movie/${id} : https://search-movies-shows.herokuapp.com/movie/9
+- /show/${id} : https://search-movies-shows.herokuapp.com/show/269988
+- /search?query= ${some title} :  https://search-movies-shows.herokuapp.com/search?query=merry
+- /search?query=${some title}&page=${int: page number} : https://search-movies-shows.herokuapp.com/search?query=merry&page=10
+
+
+**steps to deploy**
+Following steps from https://devcenter.heroku.com/articles/getting-started-with-python#set-up
+1. Install Heroku Client from https://devcenter.heroku.com/articles/heroku-cli#download-and-install
+2. Open cmd after installation is finished, run `heroku login` and enter email address and password
+3. go to app directory
+4. create requirements file by using `pip freeze > requirements.txt` 
+    **dont forget to remove the libraries that are not used in this app**
+5. heroku create app-name to create app on heroku e.g. `heroku create search-movies-shows`
+**dont forget to create Procfile** Procfile contents web: python main.py
+6. `git push heroku master` to push changes in the heroku app
+7. `heroku ps:scale web=1` to ensure that app is running
+8. go to  https://search-movies-shows.herokuapp.com/movie/9 to see results
