@@ -131,7 +131,12 @@ app_obj = Flask_app()
 
 @app.route('/')
 def home():
-    return render_template('home.html')
+    response = jsonify(status=422, response={
+                               'try': '/movie/${id}',
+                               'try': '/show/${id}',
+                               'try': '/search?query={some title}',
+                               'try': '/search?query={some title}&page={some page}'})
+    return response
 
 
 @app.route('/movie/<id>')
