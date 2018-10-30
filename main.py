@@ -148,7 +148,7 @@ def show_id(id):
 
 @app.route('/search')
 def search_title():
-    title = request.args['title']
+    title = request.args['query']
     if len(request.args) > 1:
         page = request.args['page']
         search_page, content, response = app_obj.search_title(title, int(page))

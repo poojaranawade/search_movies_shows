@@ -45,5 +45,5 @@ pip install -r requirements.txt
 - open browser and go to 
   - **/movie/${id}** : http://localhost:5000/movie/9
   - **/show/${id}** : http://localhost:5000/show/29270
-  - **/search/${some title}** : http://localhost:5000/search/merry
-  - **/search/${some title}/page/${int: page number}** : http://localhost:5000/search/merry/page/25
+  - **/search/${some title}** : http://localhost:5000/search?query=merry
+  - **/search/${some title}/page/${int: page number}** : http://localhost:5000/search?query=merry&page=10
