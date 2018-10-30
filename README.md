@@ -12,6 +12,8 @@ Search for Movies and shows using API written in Python
   - when given a '?query=${some title}', will yield any movies or shows matching that title, returning a JSON of matching titles, the years the media items were released, and whether each media item is a movie or a show.
 5. **/search?query=${some title}&page=${int: page number}** 
    - when given a '?query=${some title}', will yield _paginated_ any movies or shows matching that title, returning a JSON of matching titles, the years the media items were released, and whether each media item is a movie or a show.
+6. **/search?query=${some title}&page=${int: page number}&type=${'show' or 'movie'}**
+  - when given a '?query=${some title}', will yield _paginated_ given type and matching that title, returning a JSON of matching titles, the years the media items were released, and whether each media item is a movie or a show.
 
 
 # The data
@@ -47,6 +49,7 @@ pip install -r requirements.txt
   - /show/${id} : http://localhost:5000/show/269988
   - /search?query= ${some title} :  http://localhost:5000/search?query=merry
   - /search?query=${some title}&page=${int: page number} : http://localhost:5000/search?query=merry&page=10  
+  - /search?query=${some title}&page=${int: page number}&type=${'show' or 'movie'} : http://localhost:5000/search?query=merry&page=10&type=show
 
 # Deployed on Heroku
 **Check Deployed version**
@@ -54,6 +57,7 @@ pip install -r requirements.txt
 - /show/${id} : https://search-movies-shows.herokuapp.com/show/269988
 - /search?query= ${some title} :  https://search-movies-shows.herokuapp.com/search?query=merry
 - /search?query=${some title}&page=${int: page number} : https://search-movies-shows.herokuapp.com/search?query=merry&page=10
+- - /search?query=${some title}&page=${int: page number}&type=${'show' or 'movie'} : https://search-movies-shows.herokuapp.com/search?query=merry&page=10&type=show
 
 
 **steps to deploy**
@@ -68,4 +72,4 @@ Following steps from https://devcenter.heroku.com/articles/getting-started-with-
 **dont forget to create Procfile** Procfile contents `web: python main.py`
 6. `git push heroku master` to push changes in the heroku app
 7. `heroku ps:scale web=1` to ensure that app is running
-8. go to  https://search-movies-shows.herokuapp.com/movie/9 to see results
+8. go to https://search-movies-shows.herokuapp.com/ to see results
