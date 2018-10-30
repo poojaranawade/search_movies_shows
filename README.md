@@ -28,8 +28,15 @@ Using IMDB shows and Movie data can be found at https://www.imdb.com/interfaces/
 - **runtimeMinutes** – primary runtime of the title, in minutes
 - **genres (string array)** – includes up to three genres associated with the title
 
+# Requirements
+Flask==1.0.2
+numpy==1.14.3
+pandas==0.23.0
 
 # How to use
+**to install required libraries**
+pip install -r requirements.txt
+
 **to use locally**
 - open terminal and cd to the directory where all these files are saved
 - Run
