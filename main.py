@@ -18,8 +18,7 @@ class items:
         self.name = row['primaryTitle']
         self.releaseYear = int(row['startYear'])
         self.ratingLevel = 'Not Adult' if row['isAdult'] == '1' else 'Adult'
-        self.genres = row['genres'].split(
-            ',') if row['genres'] is not np.nan else []
+        self.genres = row['genres'].split(',') if row['genres'] is not np.nan else []
         self.time = str(row['runtimeMinutes']) + ' minutes'
 
     def serialize(self):
