@@ -57,7 +57,7 @@ pip install -r requirements.txt
 - /show/${id} : https://search-movies-shows.herokuapp.com/show/269988
 - /search?query= ${some title} :  https://search-movies-shows.herokuapp.com/search?query=merry
 - /search?query=${some title}&page=${int: page number} : https://search-movies-shows.herokuapp.com/search?query=merry&page=10
-- - /search?query=${some title}&page=${int: page number}&type=${'show' or 'movie'} : https://search-movies-shows.herokuapp.com/search?query=merry&page=10&type=show
+- /search?query=${some title}&page=${int: page number}&type=${'show' or 'movie'} : https://search-movies-shows.herokuapp.com/search?query=merry&page=10&type=show
 
 
 **steps to deploy**
